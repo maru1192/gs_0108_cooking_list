@@ -1,5 +1,5 @@
 # ①課題名：みんなのズボラメシ
-!["レシピ一覧"](./img/favorite_list.png)
+!["レシピ一覧"](./img/recipe_list.png)
 !["レシピ詳細ページ"](./img/recipe_detail.png)
 !["レシピ登録ページ"](./img/resist_page.png)
 !["お気に入りレシピ一覧ページ"](./img/favorite_list.png)

@@ -11,16 +11,31 @@ function h($s){
 //@param なし 
 //@return{} 
 
-//🌟ローカルで作業する場合はこちら
+// //🌟ローカルで作業する場合はこちら
+// function db_conn(){
+// try {
+//     $db_name = 'gs0109_cooking_db';
+//     $db_id = 'root';
+//     $db_pw = '';    //XAMPPの場合は不要
+//     $db_host = 'localhost';
+
+//     //Password:MAMP='root',XAMPP=''
+//     $pdo = new PDO("mysql:dbname=$db_name;charset=utf8;host=$db_host", $db_id, $db_pw);
+//     return $pdo;
+// } catch (PDOException $e) {
+//     exit('DBConnectError' . $e->getMessage());
+// }
+// }
+
+//🌟サーバーにアップする場合はこちら
 function db_conn(){
 try {
-    $db_name = 'gs0109_cooking_db';
-    $db_id = 'root';
-    $db_pw = '';    //XAMPPの場合は不要
-    $db_host = 'localhost';
+    $db_name = 'olive5g72_php03_recipe';
+    $db_id = 'olive5g72_php03_recipe';
+    $db_pw = 'ikumi193';
+    $db_host = 'mysql80.olive5g72.sakura.ne.jp';
 
-    //Password:MAMP='root',XAMPP=''
-    $pdo = new PDO("mysql:dbname=$db_name;charset=utf8;host=$db_host", $db_id, $db_pw);
+    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_id, $db_pw);
     return $pdo;
 } catch (PDOException $e) {
     exit('DBConnectError' . $e->getMessage());
