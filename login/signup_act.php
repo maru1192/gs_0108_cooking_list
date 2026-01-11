@@ -48,6 +48,12 @@ if ($status === false) {
     $error = $stmt->errorInfo();
     exit('ErrorMessage:' . $error[2]);
 } else {
-    //５．リダイレクト（ログインページへ）
+    //５．登録成功時、セッションに値を設定
+    $_SESSION['chk_ssid'] = session_id();
+    $_SESSION['name_sei'] = $lastName;
+    $_SESSION['name_mei'] = $firstName;
+    $_SESSION['user_id'] = (int)$pdo->lastInsertId();
+    
+    //リダイレクト
     redirect('../cooking_list/index.php');
 }

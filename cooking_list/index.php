@@ -49,8 +49,9 @@ if ($status === false) {
         <header class="page-header">
             <h1>みんなのズボラ飯</h1>
             <ul class="button_area">
-                <li><a href="create_post.php">レシピ登録</a></li>
-                <li><a href="favorite.php">お気に入り</a></li>
+                <li><a href="create_post.php">新規レシピ登録</a></li>
+                <li><a href="my_recipe.php">投稿したレシピ</a></li>
+                <li><a href="favorite.php">★お気に入り</a></li>
             </ul>
         </header>
 
