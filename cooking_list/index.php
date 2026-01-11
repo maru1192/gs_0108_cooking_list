@@ -71,10 +71,6 @@ if ($status === false) {
                         <?php else: ?>
                             <div class="thumb-noimg">No Image</div>
                         <?php endif; ?>
-
-                        <button class="heart" type="button" aria-label="お気に入り">
-                            <i class="far fa-heart"></i>
-                        </button>
                     </div>
 
                     <div class="card-body">

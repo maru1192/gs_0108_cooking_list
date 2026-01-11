@@ -49,5 +49,5 @@ if ($status === false) {
     exit('ErrorMessage:' . $error[2]);
 } else {
     //５．リダイレクト（ログインページへ）
-    redirect();
+    redirect('../cooking_list/index.php');
 }
