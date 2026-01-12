@@ -50,11 +50,11 @@ if (!is_array($tools)) $tools = [];
 $uid = $_SESSION['user_id'] ?? 0;
 $isFavorite = false;
 
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM favorites WHERE uid = :uid AND recipe_id = :recipe_id");
-    $stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
-    $stmt->bindValue(':recipe_id', $id, PDO::PARAM_INT);
-    $stmt->execute();
-    $isFavorite = $stmt->fetchColumn() > 0;
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM favorites WHERE uid = :uid AND recipe_id = :recipe_id");
+$stmt->bindValue(':uid', $uid, PDO::PARAM_INT);
+$stmt->bindValue(':recipe_id', $id, PDO::PARAM_INT);
+$stmt->execute();
+$isFavorite = $stmt->fetchColumn() > 0;
 
 ?>
 <!DOCTYPE html>
@@ -72,39 +72,50 @@ $isFavorite = false;
             const btn = document.getElementById('favoriteBtn');
             const star = btn.querySelector('.star-icon');
             const text = btn.querySelector('.favorite-text');
-            
+
             fetch('favorite_toggle.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                body: 'recipe_id=' + recipeId
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (data.isFavorite) {
-                        star.textContent = '★';
-                        text.textContent = 'お気に入り登録済み';
-                        btn.classList.add('is-favorite');
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'recipe_id=' + recipeId
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        if (data.isFavorite) {
+                            star.textContent = '★';
+                            text.textContent = 'お気に入り登録済み';
+                            btn.classList.add('is-favorite');
+                        } else {
+                            star.textContent = '☆';
+                            text.textContent = 'お気に入りに追加';
+                            btn.classList.remove('is-favorite');
+                        }
                     } else {
-                        star.textContent = '☆';
-                        text.textContent = 'お気に入りに追加';
-                        btn.classList.remove('is-favorite');
+                        alert(data.message || 'エラーが発生しました');
                     }
-                } else {
-                    alert(data.message || 'エラーが発生しました');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('通信エラーが発生しました');
-            });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('通信エラーが発生しました');
+                });
         }
     </script>
 </head>
 
 <body>
     <div class="detail-page">
-        <a href="index.php" class="back-link">← 一覧に戻る</a>
+        <div class="page-top-actions">
+            <a href="index.php" class="back-link">← 一覧に戻る</a>
+            
+            <?php if ($uid === ($recipe['uid'] ?? 0)) : ?>
+                <ul class="btn-submit">
+                    <li><a href="recipe_edit.php?id=<?= $id ?>">レシピを編集する</a></li>
+                    <li><a href="delete.php?id=<?= $id ?>">レシピを削除する</a></li>
+                </ul>
+            <?php endif; ?>
+        </div>
 
         <div class="recipe-header">
             <?php if ($headerImage): ?>

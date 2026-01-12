@@ -6,7 +6,7 @@
     padding: 20px;
 }
 
-.back-link {
+/* .back-link {
     display: inline-block;
     margin-bottom: 20px;
     color: #007bff;
@@ -16,6 +16,42 @@
 
 .back-link:hover {
     text-decoration: underline;
+} */
+
+.back-link {
+    display: inline-block;
+    padding: 14px 24px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+}
+
+.back-link:hover {
+    border-color: #999;
+    background: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.back-link:active {
+    transform: translateY(0);
+}
+
+
+
+/* トップアクション（戻るリンクとボタン） */
+.page-top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .recipe-header {
@@ -183,4 +219,39 @@
     font-size: 14px;
     font-weight: 600;
     color: #333;
+}
+
+
+/* 編集ボタン */
+.btn-submit {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-submit a {
+    flex: 1;
+    display: block;
+    padding: 14px 24px;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.btn-submit a:hover {
+    background: #ee5555;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.btn-submit a:active {
+    transform: translateY(0);
 }
